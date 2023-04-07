@@ -7,7 +7,6 @@
   <script defer src="db.mjs"></script>
   <link href="https://fonts.googleapis.com/css?family=VT323&display=swap" rel="stylesheet">
   <style>
-    /* Center the content on the page */
     body {
       background-color: white;
 background-image: radial-gradient(rgba(0, 0, 0, 0.5),black 120%);
@@ -23,16 +22,14 @@ height: 100vh;
       color: #FFFFFF; 
     }
 
-    /* Create a 16:9 aspect ratio container */
     .image-container {
       position: relative;
       width: 100%;
-      max-width: 1280px; /* You can change this value to adjust the maximum width of the container */
+      max-width: 1280px;
       padding-bottom: 56.25%; /* 16:9 aspect ratio */
       overflow: hidden;
     }
 
-    /* Style the image to fit inside the container */
     #displayImage {
       position: absolute;
       top: 0;
@@ -42,7 +39,6 @@ height: 100vh;
       object-fit: contain;
     }
 
-    /* Style the buttons container */
     .buttons-container {
       display: flex;
       justify-content: center;

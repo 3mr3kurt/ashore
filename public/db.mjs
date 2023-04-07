@@ -46,9 +46,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-// ...
-
-// Add an event listener for the form submission
 
 nameForm.addEventListener('submit', async (event) => {
   event.preventDefault();
@@ -76,5 +73,4 @@ nameForm.addEventListener('submit', async (event) => {
   }
 });
 
-// Show the modal when the page loads
 showModal();
