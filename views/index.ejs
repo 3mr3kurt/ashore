@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+    <link href="https://fonts.googleapis.com/css?family=VT323&display=swap" rel="stylesheet">
+    <style>
+        body {
+          background-color: white;
+    background-image: radial-gradient(rgba(0, 0, 0, 0.5),black 120%);
+    height: 100vh;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          min-height: 100vh;
+          margin: 0;
+          font-family: 'VT323', monospace;
+          font-size: 24px;
+          color: #FFFFFF; 
+        }
+    
+        .image-container {
+          position: relative;
+          width: 100%;
+          max-width: 1280px;
+          padding-bottom: 56.25%; /* 16:9 aspect ratio */
+          overflow: hidden;
+        }
+    
+        #displayImage {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          object-fit: contain;
+        }
+    
+        .buttons-container {
+          display: flex;
+          justify-content: center;
+          gap: 10px;
+          margin-top: 20px;
+        }
+        button {
+          background-color: #FFFFFF;
+          border: 2px solid #FFFFFF;
+          color: black;
+          font-family: 'VT323', monospace;
+          font-size: 20px;
+          padding: 5px 15px;
+          cursor: pointer;
+          transition: background-color 0.3s, color 0.3s;
+        }
+    
+        button:hover {
+          background-color: #808080;
+          border-color: #808080;
+        }
+        .modal {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.4);
+      }
+    
+      .modal-content {
+        background-color: #fefefe;
+        margin: 15% auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%;
+      }
+      </style>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Game</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <div id="nameFormContainer">
+            <form id="nameForm">
+              <label for="userName">Enter your name for more personalization:</label>
+              <input type="text" id="userName" name="userName">
+              <button type="submit">Submit</button>
+            </form>
+          </div>          
+        <img src="<%= screen.image %>" id="gameImage" alt="Game Image">
+        <p id="gameText"><%= screen.text %></p>
+        <div id="choices" data-current-screen="<%= screen.name %>">
+            <% screen.choices.forEach(choice => { %>
+              <button data-choice="<%= choice.value %>" data-next-screen="<%= choice.nextScreen %>">
+                <%= choice.text %>
+              </button>
+            <% }) %>
+        </div>
+    </div>
+    <script src="/js/script.js"></script>
+</body>
+</html>
+
