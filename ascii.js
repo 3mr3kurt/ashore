@@ -3,14 +3,14 @@ const imageToAscii = require('asciify-image');
 const { createCanvas, loadImage } = require('canvas');
 const fs = require('fs');
 
-const inputImagePath = 'public/images/walkend.jpg';
+const inputImagePath = 'public/images/initial_image.jpg';
 const outputImagePath = './outputImage.jpg';
 const fixedAspectRatio = 2.0;
 
 (async () => {
   // Increase the number of characters for higher resolution
-  const characterWidth = Math.round(200 * fixedAspectRatio);
-  const characterHeight = 400;
+  const characterWidth = Math.round(100 * fixedAspectRatio);
+  const characterHeight = 200;
 
   // Resize input image while maintaining aspect ratio
   const resizedImage = await sharp(inputImagePath)
@@ -41,12 +41,12 @@ const fixedAspectRatio = 2.0;
   for (let i = 0; i < lines.length; i++) {
     ctx.fillText(lines[i], 0, (i + 1) * fontSize);
   }
-
+  const outputJPEGQuality = 0.5;
   // Export the ASCII image as a JPEG
   const out = await loadImage(canvas.toBuffer());
   const outCanvas = createCanvas(canvasWidth, canvasHeight);
   const outCtx = outCanvas.getContext('2d');
   outCtx.drawImage(out, 0, 0, canvasWidth, canvasHeight);
   const outputStream = fs.createWriteStream(outputImagePath);
-  outCanvas.createJPEGStream().pipe(outputStream);
+  outCanvas.createJPEGStream({ quality: outputJPEGQuality }).pipe(outputStream); 
 })();
