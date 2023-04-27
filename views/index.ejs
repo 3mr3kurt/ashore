@@ -108,16 +108,16 @@
       </div>
   </div>
   <div class="container">
-    <img src="/public/images/<%= screen.image %>" id="gameImage" alt="Game Image">
-    <p id="gameText"><%= screen.text %></p>
-    <div id="choices" data-current-screen="<%= screen.name %>">
-        <% screen.choices.forEach(choice => { %>
-          <button data-choice="<%= choice.value %>" data-next-screen="<%= choice.nextScreen %>">
-            <%= choice.text %>
-          </button>
-        <% }) %>
-    </div>
-  </div>  
+      <img src="<%= screen.image %>" id="gameImage" alt="Game Image">
+      <p id="gameText"><%= screen.text %></p>
+      <div id="choices" data-current-screen="<%= screen.name %>">
+          <% screen.choices.forEach(choice => { %>
+            <button data-choice="<%= choice.value %>" data-next-screen="<%= choice.nextScreen %>">
+              <%= choice.text %>
+            </button>
+          <% }) %>
+      </div>
+  </div>
   <script src="/js/script.js"></script>
   </body>
 </html>
