@@ -108,8 +108,7 @@
       </div>
   </div>
   <div class="container">
-      <img src="<%= screen.image %>" id="gameImage" alt="Game Image">
-      <p id="gameText"><%= screen.text %></p>
+    <img src="<%= screen.image %>" id="gameImage" alt="Game Image">      <p id="gameText"><%= screen.text %></p>
       <div id="choices" data-current-screen="<%= screen.name %>">
           <% screen.choices.forEach(choice => { %>
             <button data-choice="<%= choice.value %>" data-next-screen="<%= choice.nextScreen %>">
