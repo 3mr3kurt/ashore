@@ -9,7 +9,7 @@ const getScreens = (userName) => ({
   initial: {
     name: 'initial', 
     image: 'images/start.jpg',
-    text: `$You wake up on a beach. You can't seem to remember what got you here. In the distance, there is a ruin. Behind you, there are are voices. What do you do? `,
+    text: `You wake up on a beach. You can't seem to remember what got you here. In the distance, there is a ruin. Behind you, there are are voices. What do you do? `,
     choices: [
       { text: 'Walk toward ruin', value: 'say_hi_back', nextScreen: 'screen1' },
       { text: 'Turn around', value: 'ignore', nextScreen: 'screen2' }
