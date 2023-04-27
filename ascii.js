@@ -3,8 +3,9 @@ const imageToAscii = require('asciify-image');
 const { createCanvas, loadImage } = require('canvas');
 const fs = require('fs');
 
-const inputImagePath = 'public/images/initial_image.jpg';
-const outputImagePath = './outputImage.jpg';
+const name = "conc";
+const inputImagePath = `public/images/${name}.jpg`;
+const outputImagePath = `./${name}.jpg`;
 const fixedAspectRatio = 2.0;
 
 (async () => {
