@@ -68,11 +68,24 @@
       }
     
       .modal-content {
-        background-color: #fefefe;
-        margin: 15% auto;
+          background-color: rgba(0, 0, 0, 0.4);
+          margin: 15% auto;
+          padding: 20px;
+          border: 1px solid #888;
+          width: 80%;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+      }
+
+
+      .form-container {
+        background-color: #fefefefd;
         padding: 20px;
         border: 1px solid #888;
         width: 80%;
+        position: relative;
+        color: black;
       }
       </style>
 <head>
@@ -82,25 +95,36 @@
     <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body>
-    <div class="container">
-        <div id="nameFormContainer">
-            <form id="nameForm">
-              <label for="userName">Enter your name for more personalization:</label>
-              <input type="text" id="userName" name="userName">
-              <button type="submit">Submit</button>
-            </form>
-          </div>          
-        <img src="<%= screen.image %>" id="gameImage" alt="Game Image">
-        <p id="gameText"><%= screen.text %></p>
-        <div id="choices" data-current-screen="<%= screen.name %>">
-            <% screen.choices.forEach(choice => { %>
-              <button data-choice="<%= choice.value %>" data-next-screen="<%= choice.nextScreen %>">
-                <%= choice.text %>
-              </button>
-            <% }) %>
-        </div>
-    </div>
-    <script src="/js/script.js"></script>
-</body>
+  <div id="myModal" class="modal">
+      <div class="modal-content">
+          <span class="close">&times;</span>
+          <div id="nameFormContainer" class="form-container">
+              <form id="nameForm">
+                  <label for="userName">Enter your name for more personalization:</label>
+                  <input type="text" id="userName" name="userName">
+                  <button type="submit">Submit</button>
+              </form>                
+          </div>
+          <div id="pronounContainer" class="form-container">
+              <form id="pronounForm">
+                  <label for="userPronouns">Enter your pronouns (e.g. he/him) for more personalization:</label>
+                  <input type="text" id="userPronouns" name="userPronouns">
+                  <button type="submit">Submit</button>
+              </form>  
+          </div>
+      </div>
+  </div>
+  <div class="container">
+      <img src="<%= screen.image %>" id="gameImage" alt="Game Image">
+      <p id="gameText"><%= screen.text %></p>
+      <div id="choices" data-current-screen="<%= screen.name %>">
+          <% screen.choices.forEach(choice => { %>
+            <button data-choice="<%= choice.value %>" data-next-screen="<%= choice.nextScreen %>">
+              <%= choice.text %>
+            </button>
+          <% }) %>
+      </div>
+  </div>
+  <script src="/js/script.js"></script>
+  </body>
 </html>
-
