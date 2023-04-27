@@ -3,31 +3,13 @@ const router = express.Router();
 
 //remember to delete after restarting game
 let userName = '';
-let userPronouns = '';
+//let userPronouns = '';
 
-function parsePronouns(pronounsStr) {
-  if (typeof pronounsStr !== 'string') {
-    throw new Error('Invalid input. Expected a string.');
-  }
-
-  const pronouns = pronounsStr.split('/');
-
-  if (pronouns.length !== 2) {
-    throw new Error('Invalid format. Expected pronouns separated by a single slash (e.g., "he/him").');
-  }
-
-  return {
-    subject: pronouns[0].trim(),
-    object: pronouns[1].trim(),
-  };
-}
-
-const parsedPronouns = parsePronouns(userPronouns);
 const getScreens = (userName) => ({
   initial: {
     name: 'initial', 
     image: 'images/start.jpg',
-    text: `You wake up on a beach. You can't seem to remember what got you here. In the distance, there is a ruin. Behind you, there are are voices. What do you do? `,
+    text: `$You wake up on a beach. You can't seem to remember what got you here. In the distance, there is a ruin. Behind you, there are are voices. What do you do? `,
     choices: [
       { text: 'Walk toward ruin', value: 'say_hi_back', nextScreen: 'screen1' },
       { text: 'Turn around', value: 'ignore', nextScreen: 'screen2' }
@@ -36,7 +18,7 @@ const getScreens = (userName) => ({
   screen1: {
     name: 'screen1', 
     image: 'images/ruin.jpg',
-    text: `The ruin seems to have been a mirage. Ahead there seems to be more sand. To the left is the ocean.`,
+    text: `The ruin seems to have been a mirage, ${userName}. Ahead there seems to be more sand. To the left is the ocean.`,
     choices: [
       { text: 'Walk to the water', value: 'say_no_prob', nextScreen: 'screen4' },
       { text: 'Keep walking along the shore', value: 'ignore_2', nextScreen: 'screen3' }

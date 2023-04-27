@@ -14,9 +14,6 @@ document.addEventListener('DOMContentLoaded', () => {
     nameForm.addEventListener('submit', handleNameFormSubmit);
   });
 
-  const pronounForm = document.getElementById('pronounForm');
-  pronounForm.addEventListener('submit', handlePronounFormSubmit);
-
   function handleNameFormSubmit(event) {
     event.preventDefault();
     const userName = document.getElementById('userName').value;
@@ -47,21 +44,6 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   
   
-
-  function handlePronounFormSubmit(event) {
-    event.preventDefault();
-    const userPronouns = document.getElementById('userPronouns').value;
-    const xhr = new XMLHttpRequest();
-    xhr.open('POST', '/submit-pronouns', true);
-    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-    xhr.onreadystatechange = () => {
-      if (xhr.readyState === 4 && xhr.status === 200) {
-        const data = JSON.parse(refreshXhr.responseText);
-        updateImage(data.screen.image);
-        updateTextAndChoices(data.screen);      }
-    };
-    xhr.send(`userPronouns=${encodeURIComponent(userPronouns)}`);
-  }
   
   
   
